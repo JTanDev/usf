@@ -69,7 +69,27 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
-function vowelCount(str) {}
+
+function vowelCount(str) {
+  const charFreq = {};
+  for (let char of str.toLowerCase()) {
+    if (
+      char == "a" ||
+      char == "e" ||
+      char == "i" ||
+      char == "o" ||
+      char == "u"
+    ) {
+      if (charFreq[char]) {
+        charFreq[char] += 1;
+      } else {
+        charFreq[char] = 1;
+      }
+    }
+  }
+  console.log(charFreq);
+  return charFreq;
+}
 
 /*
 Write a function called doubleValuesWithMap which accepts an array and returns a new array with all the values in the array passed to the function doubled
