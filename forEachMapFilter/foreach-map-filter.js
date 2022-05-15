@@ -70,25 +70,39 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 
+// function vowelCount(str) {
+//   const charFreq = {};
+//   for (let char of str.toLowerCase()) {
+//     if (
+//       char == "a" ||
+//       char == "e" ||
+//       char == "i" ||
+//       char == "o" ||
+//       char == "u"
+//     ) {
+//       if (charFreq[char]) {
+//         charFreq[char] += 1;
+//       } else {
+//         charFreq[char] = 1;
+//       }
+//     }
+//   }
+//   console.log(charFreq);
+//   return charFreq;
+// }
+
 function vowelCount(str) {
-  const charFreq = {};
-  for (let char of str.toLowerCase()) {
-    if (
-      char == "a" ||
-      char == "e" ||
-      char == "i" ||
-      char == "o" ||
-      char == "u"
-    ) {
-      if (charFreq[char]) {
-        charFreq[char] += 1;
-      } else {
-        charFreq[char] = 1;
-      }
+  let strArr = str.toLowerCase().split("");
+  let cF = strArr.reduce(function (charFreq, char) {
+    if (charFreq[char]) {
+      charFreq[char] += 1;
+    } else {
+      charFreq[char] = 1;
     }
-  }
-  console.log(charFreq);
-  return charFreq;
+    return charFreq;
+  }, {});
+  console.log(cF);
+  return cF;
 }
 
 /*
@@ -206,7 +220,22 @@ Examples:
 */
 
 function removeVowels(str) {
-  return str.toLowerCase().replace(/a|e|i|o|u/g, "");
+  let arr = str.toLowerCase().split("");
+  console.log(arr);
+  let newStr = "";
+  for (let letter of arr) {
+    if (
+      letter !== "a" &&
+      letter !== "e" &&
+      letter !== "i" &&
+      letter !== "o" &&
+      letter !== "u"
+    ) {
+      console.log(letter);
+      newStr += letter;
+    }
+  }
+  return newStr;
 }
 
 /*
