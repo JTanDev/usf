@@ -72,13 +72,13 @@ $("#search-form").on("submit", async function handleSearch(evt) {
  */
 
 async function getEpisodes(id) {
-  const response = await axios.get(
+  const { data } = await axios.get(
     `http://api.tvmaze.com/shows/${id}/episodes`
   );
   $("li").remove();
 
-  for (let obj of response.data) {
-    let $name = `<li id="episode">${obj.id}- ${obj.name}, Season ${obj.season}, Ep.${obj.number}</li>`;
+  for (let { id, name, season, number } of data) {
+    let $name = `<li id="episode">${id}- ${name}, Season ${season}, Ep.${number}</li>`;
     $("#episodes-list").append($name);
   }
   $("#episodes-area").show();
